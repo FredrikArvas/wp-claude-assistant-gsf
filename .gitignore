@@ -1,0 +1,16 @@
+vendor/
+.env
+
+# Föreningsdokument – lagras lokalt men committas inte
+docs/*.pdf
+docs/*.docx
+docs/*.xlsx
+docs/*.jpg
+docs/*.jpeg
+docs/*.png
+docs/*.gif
+
+# OS/editor
+.DS_Store
+Thumbs.db
+*.swp

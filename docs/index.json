@@ -1,0 +1,79 @@
+{
+    "updated": "2026-03-26",
+    "files": [
+        {
+            "filename": "slitageavgifter\/Slitageregler_2018-06-24.docx",
+            "title": "Slitageavgiftsregler för tung trafik gällande från 2018-07-01",
+            "type": "docx",
+            "date": "2026-03-26",
+            "keywords": [
+                "slitageavgift",
+                "tung trafik",
+                "väg",
+                "byggtrafik",
+                "anläggningslagen",
+                "andelstal",
+                "byggprojekt",
+                "tjällossning"
+            ],
+            "summary": "Nya regler från 2018 för slitageavgifter vid tung trafik och byggnation över 30 m², baserade på Anläggningslagen och beslutade på årsstämman 2018.",
+            "extractable": true,
+            "_mtime": "2026-03-26"
+        },
+        {
+            "filename": "slitageavgifter\/Slitageregler_2018-06-24.pdf",
+            "title": "Slitageavgiftsregler 2018 – Guldboda Samfällighetsförening",
+            "type": "pdf",
+            "date": "2026-03-26",
+            "keywords": [
+                "slitageavgift",
+                "väg",
+                "tung trafik",
+                "byggnation",
+                "anläggningslagen",
+                "andelstal",
+                "samfällighet",
+                "transporter"
+            ],
+            "summary": "Nya slitageavgiftsregler från 2018-07-01 för tunga transporter och byggnation större än 30 m² på föreningens gemensamma vägar.",
+            "extractable": true,
+            "_mtime": "2026-03-26"
+        },
+        {
+            "filename": "slitageavgifter\/Slitageregler_2019-07-01.docx",
+            "title": "Slitageregler 2019",
+            "type": "docx",
+            "date": "2026-03-26",
+            "keywords": [
+                "slitage",
+                "regler",
+                "samfällighet",
+                "nyttjande",
+                "gemensamma utrymmen",
+                "ordningsregler"
+            ],
+            "summary": "Dokument med regler för slitage och nyttjande av samfällighetens gemensamma ytor och utrymmen, gällande från 1 juli 2019.",
+            "extractable": true,
+            "_mtime": "2026-03-26"
+        },
+        {
+            "filename": "slitageavgifter\/Slitageregler_2019-07-01.pdf",
+            "title": "Regler för slitageavgifter och tung trafik 2019",
+            "type": "pdf",
+            "date": "2026-03-26",
+            "keywords": [
+                "slitageavgift",
+                "tung trafik",
+                "byggtrafik",
+                "vägunderhåll",
+                "tjällossning",
+                "bygglov",
+                "fastighetsägare",
+                "samfällighet"
+            ],
+            "summary": "Regler från 2019-07-01 för slitageavgift (25 000 kr) vid byggtrafik samt begränsningar av tung trafik på Guldboda Samfällighetsförenings vägar.",
+            "extractable": true,
+            "_mtime": "2026-03-26"
+        }
+    ]
+}
