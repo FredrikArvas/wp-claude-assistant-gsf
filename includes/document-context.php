@@ -138,6 +138,29 @@ function gsf_extract_pdf( string $path ): string {
 }
 
 /**
+ * Rekursivt extraherar text ur ett PhpWord-element.
+ */
+function gsf_docx_element_text( mixed $element ): string {
+    if ( $element instanceof \PhpOffice\PhpWord\Element\Text ) {
+        return $element->getText() . ' ';
+    }
+    if ( method_exists( $element, 'getElements' ) ) {
+        $out = '';
+        foreach ( $element->getElements() as $child ) {
+            $out .= gsf_docx_element_text( $child );
+        }
+        return $out . "\n";
+    }
+    if ( method_exists( $element, 'getText' ) ) {
+        $val = $element->getText();
+        if ( is_string( $val ) ) {
+            return $val . "\n";
+        }
+    }
+    return '';
+}
+
+/**
  * Extraherar text ur DOCX via phpoffice/phpword (om installerad via Composer).
  */
 function gsf_extract_docx( string $path ): string {
@@ -152,13 +175,11 @@ function gsf_extract_docx( string $path ): string {
     }
 
     try {
-        $phpWord  = \PhpOffice\PhpWord\IOFactory::load( $path );
-        $text     = '';
+        $phpWord = \PhpOffice\PhpWord\IOFactory::load( $path );
+        $text    = '';
         foreach ( $phpWord->getSections() as $section ) {
             foreach ( $section->getElements() as $element ) {
-                if ( method_exists( $element, 'getText' ) ) {
-                    $text .= $element->getText() . "\n";
-                }
+                $text .= gsf_docx_element_text( $element );
             }
         }
         return $text;

@@ -46,6 +46,33 @@ if ( ! $api_key ) {
 // Hjälpfunktioner
 // ---------------------------------------------------------------------------
 
+/**
+ * Rekursivt extraherar text ur ett PhpWord-element.
+ * Hanterar Text, TextRun, Paragraph, Table och liknande containers.
+ */
+function docx_element_text( mixed $element ): string {
+    // Enkelt textelement
+    if ( $element instanceof \PhpOffice\PhpWord\Element\Text ) {
+        return $element->getText() . ' ';
+    }
+    // Container med child-element (TextRun, Paragraph, Table, Row, Cell m.fl.)
+    if ( method_exists( $element, 'getElements' ) ) {
+        $out = '';
+        foreach ( $element->getElements() as $child ) {
+            $out .= docx_element_text( $child );
+        }
+        return $out . "\n";
+    }
+    // Fallback för enkla element med getText() som returnerar sträng
+    if ( method_exists( $element, 'getText' ) ) {
+        $val = $element->getText();
+        if ( is_string( $val ) ) {
+            return $val . "\n";
+        }
+    }
+    return '';
+}
+
 function extract_text_from_file( string $path ): string {
     $ext = strtolower( pathinfo( $path, PATHINFO_EXTENSION ) );
 
@@ -75,9 +102,7 @@ function extract_text_from_file( string $path ): string {
                     $text    = '';
                     foreach ( $phpWord->getSections() as $section ) {
                         foreach ( $section->getElements() as $element ) {
-                            if ( method_exists( $element, 'getText' ) ) {
-                                $text .= $element->getText() . "\n";
-                            }
+                            $text .= docx_element_text( $element );
                         }
                     }
                     return $text;
