@@ -69,16 +69,19 @@ function gsf_score_document( array $file, string $query ): int {
 }
 
 /**
- * Extraherar text ur en fil i docs/-mappen.
- * Stöder .txt och .pdf (via pdfparser om tillgänglig).
+ * Extraherar text ur en fil i GSF_DOCS_BASE.
+ * Stöder .txt, .md, .pdf (via pdfparser) och .docx (via phpword).
  * Max $max_chars tecken returneras.
  *
- * @param string $filename
+ * @param string $filename  Relativ sökväg från GSF_DOCS_BASE, t.ex. "styrelsemöten/protokoll/2025.pdf"
  * @param int    $max_chars ~12 000 ≈ 3 000 tokens
  * @return string
  */
 function gsf_extract_text( string $filename, int $max_chars = 12000 ): string {
-    $path = GSF_ASSISTANT_DIR . 'docs/' . basename( $filename );
+    // Normalisera och förhindra path traversal.
+    $safe = str_replace( '\\', '/', $filename );
+    $safe = preg_replace( '#\.\./#', '', $safe );
+    $path = GSF_DOCS_BASE . ltrim( $safe, '/' );
 
     if ( ! file_exists( $path ) ) {
         return '';

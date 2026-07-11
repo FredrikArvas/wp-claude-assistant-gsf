@@ -207,8 +207,14 @@ function is_supported( string $filename ): bool {
 // Huvud­logik
 // ---------------------------------------------------------------------------
 
-$docs_dir   = GSF_TOOL_ROOT . '/docs';
-$index_path = $docs_dir . '/index.json';
+// --docs-dir=<absolut sökväg>  Katalog att indexera (standard: plugin/docs/).
+// Index skrivs alltid till plugin/docs/index.json.
+$opts     = getopt( '', [ 'docs-dir:' ] );
+$docs_dir = isset( $opts['docs-dir'] ) ? rtrim( $opts['docs-dir'], '/\\' ) : GSF_TOOL_ROOT . '/docs';
+$index_path = GSF_TOOL_ROOT . '/docs/index.json';
+
+echo "Indexerar: $docs_dir\n";
+echo "Index:     $index_path\n\n";
 
 // Läs befintligt index.
 $existing_index  = [];

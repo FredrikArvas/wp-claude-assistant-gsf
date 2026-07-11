@@ -15,9 +15,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'GSF_ASSISTANT_VERSION', '1.0.0' );
+define( 'GSF_ASSISTANT_VERSION', '1.0.1' );
 define( 'GSF_ASSISTANT_DIR',     plugin_dir_path( __FILE__ ) );
 define( 'GSF_ASSISTANT_URL',     plugin_dir_url( __FILE__ ) );
+// Rotkatalog för de sökbara dokumenten — relativ till WP-installationen.
+define( 'GSF_DOCS_BASE',         trailingslashit( ABSPATH ) . 'styrelsens-dokument/' );
 
 require_once GSF_ASSISTANT_DIR . 'includes/system-prompt.php';
 require_once GSF_ASSISTANT_DIR . 'includes/access-control.php';
